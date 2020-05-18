@@ -83,7 +83,7 @@ export default [
         name: 'AfterService',
         component: () => lazyLoadView(import('@/views/UserCenter/AfterService'))
     },
-    { 
+    {   //支付结果
         path: '/pay_result',
         name: 'PaymentResult',
         component: () => lazyLoadView(import('@/views/UserCenter/PaymentResult'))
