@@ -102,9 +102,15 @@
 
                 .el-button--primary {
                     background: #136BFD;
-
                     &:hover {
                         background-color: rgba(19, 107, 253, 0.77);
+                    }
+                }
+                .el-button--mini {
+                    padding: 5px 10px;
+                    font-size: 16px;
+                    .el-icon-search {
+                        font-weight: bold;
                     }
                 }
             }

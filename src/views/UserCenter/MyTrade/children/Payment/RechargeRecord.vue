@@ -10,6 +10,7 @@
             <el-table-column
                 prop="create_time"
                 label="近三个月记录"
+                min-width="220"
                 >
                 <template slot="header" slot-scope="scope">
                     <el-dropdown>
@@ -29,22 +30,25 @@
             <el-table-column
                 prop="order_id"
                 label="充值订单号"
-                width="180">
+                align="center"
+                width="220">
             </el-table-column>
             <el-table-column
                 prop="pay"
                 label="充值金额"
-                width="120">
+                align="center"
+                width="180">
             </el-table-column>
             <el-table-column
                 prop="status"
                 label="充值状态"
-                width="160"
-                >
+                align="center"
+                width="180">
             </el-table-column>
             <el-table-column
                 prop="remark"
                 label="备注"
+                align="center"
                 width="220">
             </el-table-column>
         </el-table>
@@ -60,7 +64,7 @@
 
 const bean = { 
     create_time: '2020年04月20日 23:48', 
-    order_id: '52055487878', 
+    order_id: '5200420578403354', 
     pay: '100', 
     status: '充值成功',
     remark: '支付宝支付'

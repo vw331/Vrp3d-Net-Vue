@@ -25,7 +25,6 @@ import ListHeaderBar from '../ListHeaderBar'
 import ListOrderItem from '../ListOrderItem'
 
 const bean = { 
-    create_time: '2020年04月20日 23:48', 
     order_id: '52055487878', 
     pay: '50元', 
     img: require('@/assets/userCenter/myTrade/Bitmap.png'), 
@@ -36,31 +35,21 @@ const bean = {
     actions: []
 }
 
-const data = [{
-        ...bean,
+const data = new Array(10).fill({
+        create_time: '2020年04月20日 23:48',
         state: 3,
+        pay: '79.2', 
         state_txt: '已出售',
-        actions: ['立即付款', '取消订单'],
-        footer: false
-    },{
-        ...bean,
-        state: 3,
-        state_txt: '已出售',
-        actions: ['下载文件', '分享给组织', '申请售后'],
-        footer: false
-    },{
-        ...bean,
-        state: 3,
-        state_txt: '已出售',
-        actions: ['查看详情'],
-        footer: true
-    },{
-        ...bean,
-        state: 3,
-        state_txt: '已购买',
-        actions: ['下载文件', '分享给组织', '申请售后'],
-        footer: false
-    }]
+        describe: [],
+        products: [
+            {
+                ...bean,
+                actions: ['查看详情'],
+            }   
+        ],
+        footer_visible: false
+    })
+
 
 export default {
     name: 'Sold',

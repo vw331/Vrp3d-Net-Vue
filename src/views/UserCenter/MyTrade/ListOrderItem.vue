@@ -1,23 +1,21 @@
 <template>
-    <div class="order_item" :class="{'order_pending': data.state == 2 }">
+    <a class="order_item" href="javascript:;">
         <div class="order_item_header">
             <div class="order_status_text" :class="{'order_pending_text': data.state == 2 }">{{ data.state_txt }}</div>
             <div class="order_top_info">
-                <span>{{ data.create_time }}</span>
-                <span>订单号：{{ data.order_id }}</span>
-                <span>微信支付</span>
+                <span v-for="(des, index) in data.describe">{{ des }}&nbsp;&nbsp;</span>
             </div>
             <div class="order_total_money">收益：<strong>75.2</strong>元</div>
         </div>
-        <div class="order_item_body">
+        <div class="order_item_body" v-for="(product, index) in data.products" :key="index">
             <ul class="order_body_list">
                 <li>
                     <dl class="order_item_media">
-                        <dt><img :src="data.img" alt=""></dt>
+                        <dt><img :src="product.img" alt=""></dt>
                         <dd>
                             <div>
                                 <h4>原创观音造像佛像</h4>
-                                <p class="order_seller_info"><i class="order_seller_avatar" v-bind:style="{'backgroundImage': `url(${data.avatar})`}"></i>中视典数字科技</p>
+                                <p class="order_seller_info"><i class="order_seller_avatar" v-bind:style="{'backgroundImage': `url(${product.avatar})`}"></i>中视典数字科技</p>
                             </div>
                             <p class="order_id_info">ID：1597903</p>
                         </dd>
@@ -27,13 +25,14 @@
                 <li><p class="order_pay_money">-￥50.00</p></li>
                 <li>
                     <div class="order_actions">
-                        <a v-for="(action, key) in data.actions" :key="key" href="javascript:;" :class="{'order_btn_pay': action == '立即付款'}">{{action}}</a>
+                        <a v-for="(action, key) in product.actions" :key="key" href="javascript:;" 
+                        :class="{'order_btn_pay': action == '立即付款', 'order_action_err': action == '已退款'}">{{action}}</a>
                     </div>
                 </li>
             </ul>
         </div>
-        <div class="order_item_footer" v-if="data.footer">本资源累计出售 12 次  累计收益 792元</div>
-    </div>
+        <div class="order_item_footer" v-if="data.footer_visible"><span>本资源累计出售 12 次</span>  <span>累计收益 792元</span></div>
+    </a>
 </template>
 
 <script>
@@ -54,15 +53,21 @@ export default {
 
 <style lang="scss" scope>
     .order_item {
-        margin-bottom: 20px;
+        display: block;
+        margin-bottom: 24px;
+        border: 2px solid transparent;
 
-        &.order_pending {
-            border: 2px solid #FB0107;
+        &:focus {
+            border-color: #FB0107;
         }
 
         .order_pending_text {
             font-weight: 600;
             color: #FB0107 !important
+        }
+
+        .order_action_err {
+            color: #FB0107 !important;
         }
 
         .order_item_header {
@@ -159,6 +164,9 @@ export default {
             &:hover {
                 background-color: #FAFAFA;
             }
+            &+.order_item_body {
+                margin-top: -1px
+            }
         }
 
         .order_pay_money {
@@ -197,7 +205,7 @@ export default {
                 display: flex;
                 justify-content: center; 
                 align-items: center;
-                min-height: 140px;
+                min-height: 148px;
                 width: 180px;
                 padding: 20px;
                 border: 1px solid #F2F2F2;
@@ -225,6 +233,13 @@ export default {
             color: #999999;
             border:1px solid #F2F2F2;
             border-top-width: 0;
+            > span {
+                display: inline-block;
+                margin-right: 60px;
+                &:last-child {
+                    margin-right: 0
+                } 
+            }
         }
     }
 </style>

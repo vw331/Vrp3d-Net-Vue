@@ -1,12 +1,12 @@
 <template>
-    <div class="cash_record_item" :class="{'order_pending': data.state == 2 }">
+    <a class="cash_record_item" href="javascript:;">
         <div class="order_item_header">
             <div class="order_status_text" :class="{'order_pending_text': data.state == 2 }">{{ data.state_txt }}</div>
             <div class="order_result">{{data.result}}</div>
             <div class="order_top_info">
-                <span>{{ data.create_time }}</span>
-                <span>订单号：{{ data.order_id }}</span>
-                <span>微信支付</span>
+                <span>交易时间：2020-04-23 09:31 </span>
+                <span>交易号：1597903</span>
+                <span>交易金额： ￥99.00</span>
             </div>
         </div>
         <div class="order_item_body">
@@ -47,7 +47,7 @@
             </ul>
         </div>
         <div class="order_item_footer" v-if="data.footer">本资源累计出售 12 次  累计收益 792元</div>
-    </div>
+    </a>
 </template>
 
 <script>
@@ -68,7 +68,12 @@ export default {
 
 <style lang="scss" scope>
     .cash_record_item {
-        margin: 29px 48px 0 ;
+        display: block;
+        border: 2px solid transparent;
+        margin: 29px 48px 0;
+        &:focus {
+            border-color: #FB0107
+        }
         .describe_item {
             display: flex;
             flex-direction: row; 

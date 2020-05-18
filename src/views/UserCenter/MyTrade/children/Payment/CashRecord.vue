@@ -29,30 +29,38 @@
             <el-table-column
                 prop="order_id"
                 label="提现订单号"
-                width="180">
+                align="center"
+                width="220">
             </el-table-column>
             <el-table-column
                 prop="pay"
                 label="提现金额"
-                width="120">
+                align="center"
+                width="160">
             </el-table-column>
             <el-table-column
                 prop="status"
                 label="提现状态"
-                width="160"
-                >
+                align="center"
+                width="160">
             </el-table-column>
             <el-table-column
                 prop="remark"
                 label="备注"
-                width="320"
-                align="right">
+                align="center"
+                width="280">
             </el-table-column>
         </el-table>
         <div v-else class="list_view_empty">
             <img src="../../../../../assets/userCenter/myOrganization/not.png" alt="">
             <p>当前没有订单</p>
         </div>
+        <el-pagination
+            class="pagination"
+            background
+            layout="prev, pager, next"
+            :total="1000">
+        </el-pagination>
     </div>
 </template>
 
@@ -99,6 +107,21 @@ export default {
 
 <style lang="scss">
     #case_record_wrapper {
-
+        .pagination {
+            margin: 45px 0 0 0;
+            text-align: center;
+            .el-pager li, button {
+                width: 52px;
+                height: 52px;
+                line-height: 52px;
+                background-color: #ffffff;
+                font-size: 18px;
+                font-weight: normal;
+                margin: 0 10px;
+                &.active {
+                    background-color: #136BFD;
+                }
+            }
+        }
     }
 </style>

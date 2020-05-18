@@ -45,6 +45,7 @@
             width: 180px;
             color: #999999;
             font-size:14px;
+            cursor: pointer;
         }
 
         & > ul {

@@ -51,14 +51,14 @@
                         <p class="helper">如文件错误或不能下载，清填写正确邮箱便于售后</p>
                     </el-form-item>
                 </el-form>
-                <h3 class="card_split"><span class="is_required"></span> 上传凭证 </h3>
+                <h3 class="card_split"><span class="is_required"></span> 上传凭证 <i class="required_notice">必填项</i></h3>
                 <div class="upload_wrap">
                     <el-upload
                         action="https://jsonplaceholder.typicode.com/posts/"
                         list-type="picture-card"
                         :on-preview="handlePictureCardPreview"
                         :on-remove="handleRemove">
-                        <el-button class="btn_upload_primary" type="primary" icon="el-icon-plus" circle></el-button>
+                        <el-button class="btn_upload_primary" type="primary" icon="el-icon-plus" circle></el-button><br/>
                     </el-upload>
                     <el-dialog :visible.sync="dialogVisible">
                         <img width="100%" :src="dialogImageUrl" alt="">
@@ -66,9 +66,12 @@
                 </div>
             </el-card>
 
-            <el-card class="card" shadow="never">
+            <el-card class="card" shadow="never" :class="{'question_visible': !question_visible}">
                 <div slot="header" class="clearfix">
-                    <h3 class="card_title">常见问题 <small>有疑问请咨询在线客服QQ</small></h3>
+                    <h3 class="card_title">
+                        <a href="javascript:;" @click="question_visible = !question_visible">常见问题 <i  :class="{'el-icon-caret-bottom': question_visible, 'el-icon-caret-top': !question_visible}"></i></a> 
+                        <small>有疑问请咨询在线客服QQ</small>
+                    </h3>
                 </div>
                 <div class="question_list">
                     <dl class="question_dl">
@@ -136,7 +139,8 @@
                 value: '',
                 form: {},
                 dialogImageUrl: '',
-                dialogVisible: false
+                dialogVisible: false,
+                question_visible: false
             }
         },
         components:{
@@ -212,6 +216,11 @@
                     margin-left: 20px;
                 }
             }
+            &.question_visible {
+                .el-card__body {
+                    display: none
+                }
+            }
         }
         .is_required {
            position: relative;
@@ -228,7 +237,31 @@
                margin-top: -3px;
                left: 0
            }
-       }
+        }
+        .required_notice {
+            float: right;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 14px;
+            color: #FB0107;
+            padding-left: 30px;
+            position: relative;
+            &::before {
+                content: '!';
+                position: absolute;
+                left: 0;
+                font-size: 12px;
+                font-weight: bold;
+                line-height: 14px;
+                text-align: center;
+                top: 26px;
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                color: #ffffff;
+                background-color: #FB0107;
+            }
+        }
         .form {
             width: 770px;
             margin: 15px auto;
@@ -251,6 +284,9 @@
             .el-form-item {
                 margin-bottom: 33px;
             }
+        }
+        .order_body_list:hover {
+            color: #333333  
         }
         .card_split {
             line-height: 66px;

@@ -54,7 +54,7 @@
 
         .container {
             width: 1380px;
-            margin: 15px auto;
+            margin: 60px auto 100px;
         }
 
         .card {

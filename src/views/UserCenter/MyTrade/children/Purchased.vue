@@ -16,8 +16,8 @@
 import ListHeaderBar from '../ListHeaderBar'
 import ListOrderItem from '../ListOrderItem'
 
+
 const bean = { 
-    create_time: '2020年04月20日 23:48', 
     order_id: '52055487878', 
     pay: '50元', 
     img: require('@/assets/userCenter/myTrade/Bitmap.png'), 
@@ -29,30 +29,73 @@ const bean = {
 }
 
 const data = [{
-        ...bean,
+        create_time: '2020年04月20日 23:48',
         state: 3,
+        pay: '50元', 
         state_txt: '已购买',
-        actions: ['下载文件', '分享给组织', '申请售后'],
-        footer: false
+        describe: ['2020年04月20日 23:48' ,'订单号：5200420578403354', '微信支付（小程序）'],
+        products: [
+            {
+                ...bean,
+                actions: ['下载文件', '分享给组织', '申请售后']
+            }   
+        ],
+        footer_visible: false
+    },{
+        create_time: '2020年04月20日 23:48',
+        state: 3,
+        pay: '50', 
+        state_txt: '已购买',
+        describe: ['2020年04月20日 23:48' ,'订单号：5200420578403354', '微信支付（小程序）'],
+        products: [
+            {
+                ...bean,
+                actions: ['下载文件', '分享给组织', '申请售后']
+            }   
+        ],
+        footer_visible: false
+    },{
+        create_time: '2020年04月20日 23:48',
+        state: 3,
+        pay: '79.2', 
+        state_txt: '已出售',
+        describe: ['2020年04月20日 23:48', '订单号：5200420578403354', '微信支付（小程序'],
+        products: [
+            {
+                ...bean,
+                actions: ['查看详情']
+            }   
+        ],
+        footer_visible: true
     },{
         ...bean,
         state: 3,
         state_txt: '已购买',
-        actions: ['下载文件', '分享给组织', '申请售后'],
+        products: [
+            {
+                ...bean,
+                actions: ['下载文件', '分享给组织', '申请售后']
+            }   
+        ],
         footer: false
     },{
-        ...bean,
+        create_time: '2020年04月20日 23:48',
         state: 3,
+        pay: '50', 
         state_txt: '已购买',
-        actions: ['查看详情'],
-        footer: true
-    },{
-        ...bean,
-        state: 3,
-        state_txt: '已购买',
-        actions: ['下载文件', '分享给组织', '申请售后'],
-        footer: false
+        describe: ['2020年04月20日 23:48' ,'订单号：5200420578403354'],
+        products: [
+            {
+                ...bean,
+                actions: ['已退款']
+            },{
+                ...bean,
+                actions: ['下载文件', '分享给组织', '申请售后']
+            }   
+        ],
+        footer_visible: false
     }]
+
 
 export default {
     name: 'purchased',

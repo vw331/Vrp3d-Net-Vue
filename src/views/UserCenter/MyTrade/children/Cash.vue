@@ -29,10 +29,10 @@
             <div>
                 <el-form class="cash_form" ref="form" :model="form" label-position="left" label-width="130px">
                     <el-form-item label="支付宝账号：">
-                        <el-input v-model="form.name"></el-input>
+                        <el-input v-model="form.user"></el-input>
                     </el-form-item>
                     <el-form-item label="支付宝姓名：">
-                        <el-input v-model="form.num"></el-input>
+                        <el-input v-model="form.name"></el-input>
                     </el-form-item>
                     <el-form-item label="绑定的手机：">
                         <el-row type="flex" :gutter="15">
@@ -45,7 +45,7 @@
                         </el-row>
                     </el-form-item>
                     <el-form-item label="验证码：">
-                        <el-input v-model="form.name"></el-input>
+                        <el-input v-model="form.code"></el-input>
                     </el-form-item>
                 </el-form>
             </div>
@@ -271,6 +271,7 @@ export default {
                margin-bottom: 42px;
            }
            h3 {
+               font-size: 21px;
                margin-bottom: 12px;
                color: #3B3C3C;
            }

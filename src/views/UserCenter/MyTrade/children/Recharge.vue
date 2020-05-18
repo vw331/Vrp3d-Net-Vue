@@ -29,7 +29,7 @@
             </div>
             <div class="card_footer">
                 <p class="recharge_total">需付金额: <strong>{{ money }}</strong></p>
-                <el-button type="danger" class="recharge_btn_entry" :disabled="!Number(money)" @click="showWechatPay">确认充值</el-button>
+                <el-button type="danger" class="recharge_btn_entry" :disabled="!Number(money)" @click="showWechatPay"><i class="tool_tip">请输入充值金额</i>确认充值</el-button>
             </div>
         </el-card>
 
@@ -208,7 +208,13 @@ export default {
                }
            }
        }
+       .recharge_tooltip {
+           font-size: 16px;
+           color: #FB0107;
+           border: 1px solid #FB0107;
+       }
        .recharge_btn_entry {
+            width: 200px;
             height: 50px;
             font-size: 18px;
             border-radius: 0;
@@ -216,21 +222,56 @@ export default {
             color: #ffffff;
             border-color: darken($color: $red, $amount: 0.8);
             background-color: $red;
-
+            position: relative;
+            .tool_tip {
+                display: none;
+            }
             &:disabled {
                 color: #BFBFBF;
                 background-color: #D6D6D6;
-                border-color: transparent
+                border-color: transparent;
+
+                .tool_tip {
+                    display: block;
+                    position: absolute;
+                    width: 200px;
+                    height: 56px;
+                    line-height: 56px;
+                    border: 1px solid #FB0107;
+                    top: -70px;
+                    left: 0px;
+                    font-size: 16px;
+                    color: #FB0107;
+                    font-weight: normal;
+                    font-style: normal;
+                    text-align: center;
+                    &:after {
+                        content: '';
+                        width: 10px;
+                        height: 10px;
+                        border: 1px solid #FB0107;
+                        position: absolute;
+                        bottom: -6px;
+                        left: 50%;
+                        border-width: 0 1px 1px 0;
+                        transform: rotate(45deg);
+                        background-color: #ffffff
+                    }
+                }
             }
+            
        }
        .recharge_pay_dialog {
            .recharge_phone {
                display: block;
                position: absolute;
                top: -15px;
-               left: -308px; 
+               left: -300px; 
                width: 308px;
                height: 498px;
+           }
+           .el-dialog {
+                transform: translateX(120px);
            }
            .el-dialog__header {
                height: 60px;
@@ -252,7 +293,7 @@ export default {
                color: #878787
            }
 		   .qr_code_notice {
-			   margin: 10px 36px 20px;
+			   margin: 10px 36px 10px;
 			   font-size: 14px;
 			   font-weight: bold;
 			   color: $red;
