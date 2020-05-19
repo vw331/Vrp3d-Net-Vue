@@ -296,6 +296,7 @@ export default {
 			   margin: 10px 36px 10px;
 			   font-size: 14px;
 			   font-weight: bold;
+               text-align: center;
 			   color: $red;
 		   }
        }
