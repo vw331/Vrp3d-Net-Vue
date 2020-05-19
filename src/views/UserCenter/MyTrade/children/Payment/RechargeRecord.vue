@@ -13,16 +13,16 @@
                 min-width="220"
                 >
                 <template slot="header" slot-scope="scope">
-                    <el-dropdown>
+                    <el-dropdown @command="handleCommand">
                         <span class="el-dropdown-link">
-                            近三个月订单<i class="el-icon-arrow-down el-icon--right"></i>
+                            {{selected}}<i class="el-icon-arrow-down el-icon--right"></i>
                         </span>
                         <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item>全部</el-dropdown-item>
-                            <el-dropdown-item>近一周</el-dropdown-item>
-                            <el-dropdown-item>近一个月</el-dropdown-item>
-                            <el-dropdown-item>近三个月</el-dropdown-item>
-                            <el-dropdown-item>近半年</el-dropdown-item>
+                            <el-dropdown-item command="全部">全部</el-dropdown-item>
+                            <el-dropdown-item command="近一周">近一周</el-dropdown-item>
+                            <el-dropdown-item command="近一个月">近一个月</el-dropdown-item>
+                            <el-dropdown-item command="近三个月">近三个月</el-dropdown-item>
+                            <el-dropdown-item command="近半年">近半年</el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
                 </template> 
@@ -86,7 +86,8 @@ export default {
     name: 'RechargeRecord',
     data(){
         return {
-            list: data
+            list: data,
+            selected: '近三个月'
         }
     },
     methods: {
@@ -94,6 +95,9 @@ export default {
             if( columnIndex == 3 && row.status == '待支付' ){
                 return { 'color': '#FB0107'}
             }
+        },
+        handleCommand(command) {
+            this.selected = command
         }
     }
 }
